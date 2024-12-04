@@ -1,0 +1,22 @@
+{
+  "name": "job-portal",
+  "version": "1.0.0",
+  "description": "'This is a Portal to apply for Job'",
+  "main": "index.js",
+  "scripts": {
+    "test": "start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rohit-541/Job-Portal.git"
+  },
+  "author": "Rohit",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rohit-541/Job-Portal/issues"
+  },
+  "homepage": "https://github.com/rohit-541/Job-Portal#readme",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}
