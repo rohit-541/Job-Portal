@@ -2,7 +2,7 @@
   "name": "job-portal",
   "version": "1.0.0",
   "description": "'This is a Portal to apply for Job'",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "start"
   },
@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/rohit-541/Job-Portal#readme",
   "dependencies": {
+    "ejs": "^3.1.10",
+    "ejs-layout": "^1.0.15",
     "express": "^4.21.1"
   }
 }
