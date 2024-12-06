@@ -1,0 +1,63 @@
+  <!--Enclosing form in div to get margin-->
+  <div class="m-3">
+    <form class="row g-3" id="Jobform">
+
+      <!--Field 1-->
+        <div class="col-12">
+          <label for="Category" class="form-label">Job Category</label>
+          <input type="text" name="category" class="form-control" id="Category" placeholder="Category" required>
+        </div>
+
+      <!--Field 2-->
+        <div class="col-12">
+          <label for="designation" class="form-label">Job Designation</label>
+          <input type="text" class="form-control" id="designation" name="desg" placeholder="Designation" required>
+        </div>
+
+        <!--Field 3-->
+        <div class="col-12">
+          <label for="location" class="form-label">Job Location</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="location" name="location" aria-describedby="inputGroupPrepend" placeholder="Location" required>
+          </div>
+        </div>
+
+          <!--Field -->
+        <div class="col-12">
+          <label for="salary" class="form-label">Job Salary</label>
+          <input type="number" class="form-control" id="salary" min="0" name="salary" placeholder="Salary in Rupees" required>
+        </div>
+
+        <!--Field-->
+        <div class="col-12">
+          <label for="opening" class="col-auto col-form-label">Number of openings</label>
+            <div class="col-12 m-0">
+              <input type="number" class="form-control" name="opening" id="opening" placeholder="Number of Job opening" min="1">
+            </div>
+        </div>
+        
+        <!--Field-->
+        <div class="col-12">
+          <label for="deadline" class="col-auto col-form-label">Application Deadline</label>
+            <div class="col-12 m-0">
+              <input type="date" class="form-control" id="deadline" name="deadline" placeholder="Number of Job opening" min="1">
+            </div>
+        </div>
+
+        <!--Field-->
+        <div class="col-12">
+          <label for="colFormLabel" class="col-auto col-form-label">Skills required</label>
+            <div class="col-12 m-0">
+              <input type="text" class="form-control" id="SkillsRequired" placeholder="Skills required" min="1" name="skills">
+              <button class="btn btn-primary m-2" id="add">Add</button>
+              <div class="d-flex" id="skillcontainer"></div>
+            </div>
+          </div> 
+            
+        <div class="col-12">
+          <button class="btn btn-primary" type="submit">Submit form</button>
+        </div>
+
+      </form>
+      <script src="../public/js/job-add-js.js"></script>
+</div>
