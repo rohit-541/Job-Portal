@@ -1,4 +1,9 @@
 <div class="m-3">
+  <% if(error != null){%>
+    <div class="alert alert-danger" role="alert">
+      <%=error[0]%>  
+    </div>
+  <%}%>
   <form action="/register" method="post">
     <div class="input-group mb-3">
       <span class="input-group-text" id="basic-addon1">Name</span>
@@ -36,7 +41,7 @@
         <label for="inputPassword6" class="col-form-label">Confirm Password</label>
       </div>
       <div class="col-auto">
-        <input type="password" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
+        <input type="password" name="confirm" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
       </div>
       <div class="col-auto">
         <span id="passwordHelpInline" class="form-text">

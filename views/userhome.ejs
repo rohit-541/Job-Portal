@@ -1,0 +1,20 @@
+<%jobs.forEach((job)=>{%>
+    <div class="card m-3" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title"><%=job.designation%> at <%=job.company%> in <%=job.location%></h5>
+          <p class="card-text"><%=job.description%></p>
+    
+          <h6>Skills required</h6>
+          <ul class="list-group">
+            <%job.skills.forEach((skill)=>{%>
+                <li class="list-group-item m-1"><%=skill%></li>
+            <%})%>
+          </ul>
+          
+          <h6>Apply by:<%=job.deadline%></h6>
+          <h6>Salary:<%=job.salary%> </h6>
+          <a href="#" class="btn btn-primary">Apply <span class="badge text-bg-danger"><%=job.opening%> Left</span></a>
+        </div>
+      </div>
+<%})%>
+

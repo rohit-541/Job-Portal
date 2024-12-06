@@ -1,11 +1,11 @@
-export class userModal{
+export default class userModal{
     
     //Constructor for userModal
-    constructor(id,name,email,contact,resume){
+    constructor(id,name,email,password,resume){
         this.id = id;
         this.name = name;
         this.email = email;
-        this.contact = contact;
+        this.password = password;
         this.resume = resume;
     }
 
@@ -19,9 +19,17 @@ export class userModal{
     }
 
     //AddApplicatant
-    static addNew(name,email,contact,resume){
-        const newUser = new userModal(generateID(),name,email,contact,resume);
+    static addNew(data){
+        const index = users.findIndex(p=>p.email == data.email);
+        if(index != -1){
+            return null;
+        }
+
+        console.log(data);
+
+        const newUser = new userModal(this.generateID(),data.name,data.email,data.password,data.linkedIn);
         users.push(newUser);
+        console.log(users);
         return users;
     }
 
@@ -31,6 +39,15 @@ export class userModal{
 
         if(index != -1){
             users.splice(index,1);
+        }
+    }
+    static authUser(email,password){
+        const user = users.find(p=>p.email == email && p.password == password);
+
+        if(user == null){
+            return false;
+        }else{
+            return true;
         }
     }
 }

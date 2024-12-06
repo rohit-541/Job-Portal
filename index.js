@@ -6,7 +6,8 @@ import path from 'path'
 
 //Import user modules
 import {userControler} from '../Job-Portal/controllers/user.controler.js'
-
+import validateRequest from './middleware/validation.middleware.js'
+import validateRequest2 from './middleware/validation.login.js'
 //create server
 const app = express();
 app.use(express.static('public'));
@@ -28,6 +29,8 @@ app.get('/register',UController.registerPage);
 app.get('/addJob',UController.addJob);
 
 //Job Listing 
-app.post('/register',UController.registerUser);
+app.post('/register',validateRequest,UController.registerUser);
+app.post('/login',validateRequest2,UController.loginUser);
+
 
 export {app}
