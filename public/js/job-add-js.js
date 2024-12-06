@@ -26,3 +26,5 @@ addbtn.addEventListener("click", (event) => {
 });
 
 form.FormData.append("skills", SkilsArray);
+
+

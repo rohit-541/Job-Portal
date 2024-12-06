@@ -15,4 +15,10 @@ export class userControler{
     addJob(req,res){
         res.render('addjob.ejs',{login:true});
     }
+    registerUser(req,res){
+        //To-Do
+    }
+    loginUser(req,res){
+        //TO-do
+    }
 }

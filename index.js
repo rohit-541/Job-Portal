@@ -9,19 +9,25 @@ import {userControler} from '../Job-Portal/controllers/user.controler.js'
 
 //create server
 const app = express();
+app.use(express.static('public'));
 
 //set layout middleware
-app.use(express.static('public'));
 app.use(ejsLayouts);
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
 console.log();
 //set the view engine
 app.set('view engine','ejs');
 app.set('views',path.join(path.resolve(),'views'));
 
 const UController = new userControler();
+//Display Job listings
 app.get('/',UController.Home);
 app.get('/login',UController.loginPage);
 app.get('/register',UController.registerPage);
 app.get('/addJob',UController.addJob);
+
+//Job Listing 
+app.post('/register',UController.registerUser);
 
 export {app}
