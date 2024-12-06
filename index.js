@@ -1,18 +1,24 @@
-//Importing Module
-import {express} from 'express'
-import {expresslayout} from 'ejs-layout';
+//Import default pkgs
+import express from 'express'
+import ejsLayouts from 'express-ejs-layouts'
+import path from 'path'
 
-//Create server
+
+//Import user modules
+import {userControler} from '../Job-Portal/controllers/user.controler.js'
+
+//create server
 const app = express();
-app.use(express.static('/public'));
-app.use(expresslayout);
 
-//use ejs and ejs-layouts as middle-ware
+//set layout middleware
+app.use(ejsLayouts);
+app.use(express.static('public'));
+
+//set the view engine
 app.set('view-engine','ejs');
-app.set('views','./view');
+app.set('views','/views/');
 
-//Set routes
-app.get('/')
+const UController = new userControler();
+app.get('/',UController.LoginHome);
 
-
-export default app;
+export {app}

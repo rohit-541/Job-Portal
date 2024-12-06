@@ -6,6 +6,7 @@
   "scripts": {
     "test": "start"
   },
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rohit-541/Job-Portal.git"
@@ -19,6 +20,7 @@
   "dependencies": {
     "ejs": "^3.1.10",
     "ejs-layout": "^1.0.15",
-    "express": "^4.21.1"
+    "express": "^4.21.1",
+    "express-ejs-layouts": "^2.5.1"
   }
 }

@@ -12,7 +12,18 @@
 
     <nav class="navbar navbar-dark bg-primary">
         <a class="navbar-brand" href ='/' >JobUniverse</a>
-    <!--If else condition-->
+    <% if(login == false){%>
+        <div>
+            <button class="btn btn-light " type="button">Login</button>
+            <button class="btn btn-light" type="button">Register</button>
+        </div>
+    <%}else{%>
+    <!-- Only if user is logged in -->
+    <form class="form-inline d-flex">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn bg-light btn-outline-dark my-2 my-sm-0 m-3" type="submit">Search</button>
+      </form>
+    <%}%>
     </nav>
 
     <%-body%>
