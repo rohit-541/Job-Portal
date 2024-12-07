@@ -7,49 +7,54 @@ export default class userModal{
         this.email = email;
         this.password = password;
         this.resume = resume;
+        this.appliedJobs = [];
+        this.notifications = [];
     }
 
+    //Returns all the users 
     static getAll(){
         return users;
     }
 
-    //static id
+    //return a random ID for new users
     static generateID(){
         return Number(Date.now() + (Math.random()*10).toFixed());
     }
 
-    //AddApplicatant
+    //Register new Applicant
     static addNew(data){
+        //Checks if it already exists 
         const index = users.findIndex(p=>p.email == data.email);
         if(index != -1){
             return null;
         }
-
-        console.log(data);
-
+        
+        //Add user to userArray
         const newUser = new userModal(this.generateID(),data.name,data.email,data.password,data.linkedIn);
         users.push(newUser);
-        console.log(users);
-        return users;
+        return newUser;
     }
 
-    //remove a user
-    static removeUser(user){
-        const index = users.findIndex(p=>p.id == user.id);
-
-        if(index != -1){
-            users.splice(index,1);
-        }
-    }
+    //return null if user does not exist else returns the user
     static authUser(email,password){
-        const user = users.find(p=>p.email == email && p.password == password);
+        return users.find(p=>p.email == email & p.password == password);
+    }
 
-        if(user == null){
-            return false;
-        }else{
-            return true;
-        }
+    //Add new job to user
+    addJob(job){
+        this.appliedJobs.push(job);
+        this.notifications.push(`Successfully applied for ${job.designation} at ${job.company}`);
+    }
+
+    //Get applied jobs
+    returnJobArray(){
+        return this.appliedJobs;
+    }
+
+    //Get notifications
+    returnNotifications(){
+        return this.notifications;
     }
 }
 
-var users = []
+var users = [];

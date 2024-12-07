@@ -1,53 +1,61 @@
-
-export class recruiterModal{
-    constructor(id,name,jobs,email,password){
+export default class recruterModal{
+    
+    //Constructor for userModal
+    constructor(id,name,email,password,linkedIn){
         this.id = id;
         this.name = name;
-        this.jobs = jobs;
         this.email = email;
         this.password = password;
+        this.linkedIn = linkedIn
+        this.postedJob = [];
+        this.applications = [];
+        this.notifications = [];
     }
 
+    //Returns all the users 
     static getAll(){
         return recruters;
     }
 
-
-    //Generate random id
-    static GenrateID(){
-        return Number(Date.now()+ (Math.random()*10).toFixed());
+    //return a random ID for new users
+    static generateID(){
+        return Number(Date.now() + (Math.random()*10).toFixed());
     }
 
-    //Add new recruter
-    static addNew(name,jobs,email,password){
-        const newRecruter = new recruiterModal(this.GenrateID(),name,jobs,email,password);
-        recruters.push(newRecruter);
-    }
-
-    //remove a recruter
-    static removeRecruter(id){
-        const index = recruters.findIndex(p=>p.id == id);
-
+    //Register new Applicant
+    static addNew(data){
+        //Checks if it already exists 
+        const index = recruters.findIndex(p=>p.email == data.email);
         if(index != -1){
-            recruters.splice(index,1);
+            return null;
         }
+        
+        //Add user to userArray
+        const newUser = new recruterModal(this.generateID(),data.name,data.email,data.password,data.linkedIn);
+        recruters.push(newUser);
+        return newUser;
     }
 
-    //Add a job to recruter
-    addNewJob(job){
-        this.jobs.push(job);
+    //return null if user does not exist else returns the user
+    static authUser(email,password){
+        return recruters.find(p=>p.email == email & p.password == password);
     }
 
-    //Remove a job
-    removejob(job){
-        const index= this.jobs.findIndex(p=>p.id == job.id);
-
-        if(index != -1){
-            this.jobs.splice(index,1);
-        }
-
+    //Add new job to user
+    addJob(job){
+        this.postedJob.push(job);
+        this.notifications.push(`Successfully posted for ${job.designation} at ${job.company}`);
     }
 
+    //Get applied jobs
+    returnJobArray(){
+        return this.postedJob;
+    }
+
+    //Get notifications
+    returnNotifications(){
+        return this.notifications;
+    }
 }
 
 var recruters = [];
