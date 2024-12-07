@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/rohit-541/Job-Portal#readme",
   "dependencies": {
+    "cookie-parser": "^1.4.7",
     "ejs": "^3.1.10",
     "ejs-layout": "^1.0.15",
     "express": "^4.21.1",

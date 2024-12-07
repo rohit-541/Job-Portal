@@ -27,6 +27,8 @@ export class userControler{
         res.render('addjob.ejs',{login:true,error:null,msg:null});
     }
 
+    //render the 
+
     //Register User on post request
     registerUser(req,res){
         //Get the data from form
@@ -73,7 +75,7 @@ export class userControler{
             const user = recruterModal.authUser(email,password);
             if(user){
                 req.session.userEmail = email;
-                res.render('recruterHome',{login:true,user:user,msg:null});
+                res.render('recruterHome',{login:true,user:user,msg:null,error:null});
             }else{
                 res.render('login',{login:false,error:['Invalid Credentials'],msg:null});
             }
@@ -81,6 +83,10 @@ export class userControler{
 
     }   
 
+
+
+
+    //Logout the user
     logout(req,res,next){
 
         req.session.destroy((err)=>{

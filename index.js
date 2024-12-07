@@ -3,7 +3,7 @@ import express from 'express'
 import ejsLayouts from 'express-ejs-layouts'
 import path from 'path'
 import session from 'express-session'
-
+import cookieParser from 'cookie-parser'
 
 
 //Import user modules
@@ -11,7 +11,7 @@ import {userControler} from '../Job-Portal/controllers/user.controler.js'
 import validateRequest from './middleware/validation.middleware.js'
 import validateRequest2 from './middleware/validation.login.js'
 import {auth} from '../Job-Portal/middleware/auth.middleware.js'
-
+import { setLastVisit } from './middleware/setlastVisit.js'
 //create server
 const app = express();
 app.use(express.static('public'));
@@ -21,6 +21,9 @@ app.use(session({
     saveUninitialized:true,
     cookie:{secure:false},
 }))
+app.use(cookieParser());
+app.use(setLastVisit);
+
 //set layout middleware
 app.use(ejsLayouts);
 app.use(express.json());
