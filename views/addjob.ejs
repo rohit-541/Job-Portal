@@ -1,6 +1,6 @@
   <!--Enclosing form in div to get margin-->
   <div class="m-3">
-    <form class="row g-3" id="Jobform">
+    <form action="/addJob" method="post" class="row g-3" id="Jobform">
 
       <!--Field 1-->
         <div class="col-12">
@@ -19,6 +19,13 @@
           <label for="location" class="form-label">Job Location</label>
           <div class="input-group">
             <input type="text" class="form-control" id="location" name="location" aria-describedby="inputGroupPrepend" placeholder="Location" required>
+          </div>
+        </div>
+        <!--Field 3-->
+        <div class="col-12">
+          <label for="company" class="form-label">Company</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="company" name="company" aria-describedby="inputGroupPrepend" placeholder="Location" required>
           </div>
         </div>
 
@@ -55,9 +62,9 @@
           </div> 
             
         <div class="col-12">
-          <button class="btn btn-primary" type="submit">Submit form</button>
+          <button class="btn btn-primary" type="submit" id="submit">Submit form</button>
         </div>
 
       </form>
-      <script src="../public/js/job-add-js.js"></script>
+      <script src="/js/job-add-js.js"></script>
 </div>

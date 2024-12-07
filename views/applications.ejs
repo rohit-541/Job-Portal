@@ -1,0 +1,13 @@
+<h1><%=job.destignation%> at <%=job.company%> in <%=job.location%></h1>
+
+<% applications.forEach((user)=>{
+    <div class="card m-3" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title"><%=user.name%></h5>
+          <p class="card-text"><%=user.email%></p>
+          <p class="card-text"><%=user.contact%></p>
+          <a href="#" class="btn btn-primary">Accept</a>
+          <a href="<%=user.resume%>" class="btn btn-primary">Resume</a>
+        </div>
+      </div>
+<%})%>

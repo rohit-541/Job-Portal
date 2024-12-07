@@ -38,7 +38,7 @@ const UController = new userControler();
 app.get('/',UController.Home);
 app.get('/login',UController.loginPage);
 app.get('/register',UController.registerPage);
-app.get('/addJob',auth,UController.addJob);
+app.get('/addJob/:id',auth,UController.addJob);
 app.get('/logout',UController.logout);
 app.get('/jobs/:id',auth,UController.RecruterJobs);
 app.get('/gjobs/:id',auth,UController.allJobs);
@@ -46,5 +46,5 @@ app.get('/gjobs/:id',auth,UController.allJobs);
 //Job Listing 
 app.post('/register',validateRequest,UController.registerUser);
 app.post('/login',validateRequest2,UController.loginUser);
-
+app.post('/addJob',auth,UController.addNewJob);
 export {app}

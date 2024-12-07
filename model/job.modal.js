@@ -21,7 +21,7 @@ export default class jobModel{
 
     static addJobs(cat,des,loc,comp,sal,deadline,skils,opening,postedon,applicants){
         const newJob = new jobModel(cat,des,loc,comp,sal,deadline,skils,opening,postedon,applicants);
-
+        console.log(newJob);
         jobs.push(newJob);
     }
 }

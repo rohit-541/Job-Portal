@@ -33,7 +33,6 @@ export class userControler{
 
         const user = recruterModal.getUserbyId(id);
 
-        user.postedJob.push(job1);
         if(user != null){
             res.render('recruterJobs',{jobs:user.postedJob,login:true,error:null,msg:null});
         }
@@ -42,6 +41,16 @@ export class userControler{
     allJobs(req,res){
         const allJobs = jobModal.getAll();
         res.render('userhome',{jobs:allJobs,login:true,error:null,msg:null,user:null});
+    }
+
+    //render applications page
+    application(req,res,next){
+        const id = req.params.id;
+        const user = recruterModal.getUserbyId(id);
+
+        if(user){
+            const applicant = {name:user.name,resume:user.linkedIn,email:user.email,}
+        }
     }
 
     //Register User on post request
@@ -98,7 +107,13 @@ export class userControler{
 
     }   
 
-
+    //Addnew Job
+    addNewJob(req,res,next){    
+        const skillArray = req.body.skills.split(',');
+        jobModal.addJobs(req.body.category,req.body.desg,req.body.location,req.body.company,req.body.salary,req.body.deadline,skillArray,req.body.opening,Date.now().toLocaleString(),[]);
+        
+        return res.send("Job Submitted successfully");
+    }
 
 
     //Logout the user
