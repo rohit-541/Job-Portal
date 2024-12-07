@@ -33,14 +33,25 @@ export class userControler{
     loginUser(req,res){
         const useremail = req.body.email;
         const userpassword = req.body.password;
-        console.log(req.body);
         const authUser = userModal.authUser(useremail,userpassword);
-        let jobs = jobModal.getAll();
-
+        
         if(authUser){
+            req.session.userEmail = useremail;
+            let jobs = jobModal.getAll();
             return res.render('userhome',{login:true,jobs:jobs,user:null});
         }   
 
         res.render('register',{login:false,error:["No user found.Please register first"],msg:null});
     }   
+
+    logout(req,res,next){
+
+        req.session.destroy((err)=>{
+            if(err){
+                console.log(err);
+            }else{
+                res.redirect('/login');
+            }
+        })
+    }
 }

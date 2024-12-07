@@ -18,6 +18,12 @@ export default class jobModel{
     static getAll(){
         return jobs;
     }
+
+    static addJobs(cat,des,loc,comp,sal,deadline,skils,opening,postedon,applicants){
+        const newJob = new jobModel(cat,des,loc,comp,sal,deadline,skils,opening,postedon,applicants);
+
+        jobs.push(newJob);
+    }
 }
 
 const job1 = new jobModel("Tech","SDE","Delhi","Google","1200000","10/12/2024",['C++','Python','HTML'],5,'5/12/2024',['user1']);
