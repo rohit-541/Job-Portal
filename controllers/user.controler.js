@@ -27,7 +27,22 @@ export class userControler{
         res.render('addjob.ejs',{login:true,error:null,msg:null});
     }
 
-    //render the 
+    //render the jobs
+    RecruterJobs(req,res){
+        const id = req.params.id;
+
+        const user = recruterModal.getUserbyId(id);
+
+        user.postedJob.push(job1);
+        if(user != null){
+            res.render('recruterJobs',{jobs:user.postedJob,login:true,error:null,msg:null});
+        }
+    }
+
+    allJobs(req,res){
+        const allJobs = jobModal.getAll();
+        res.render('userhome',{jobs:allJobs,login:true,error:null,msg:null,user:null});
+    }
 
     //Register User on post request
     registerUser(req,res){

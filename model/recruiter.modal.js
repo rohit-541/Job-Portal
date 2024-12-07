@@ -56,6 +56,10 @@ export default class recruterModal{
     returnNotifications(){
         return this.notifications;
     }
+
+    static getUserbyId(id){
+        return recruters.find(p=>p.id == id);
+    }
 }
 
 var recruters = [];

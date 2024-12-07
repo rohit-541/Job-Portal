@@ -1,16 +1,4 @@
-<% if(locals.lastVisit != null){%>
-  <div class="alert alert-info m-3" role="alert">
-      Last Visited <%=locals.lastVisit%>
-  </div>
-  <%}else{%>
-    <div class="alert alert-success m-3" role="alert">
-      No visit from last month
-  </div>
-  <%}%>
-<%if(user != null) {%>
-<h1>Welcome <%=user.name%></h1>
-<%}%>
-
+<h2>All Jobs Posted by you</h2>
 <%jobs.forEach((job)=>{%>
     <div class="card m-3" style="width: 18rem;">
         <div class="card-body">
@@ -26,8 +14,7 @@
           
           <h6>Apply by:<%=job.deadline%></h6>
           <h6>Salary:<%=job.salary%> </h6>
-          <a href="#" class="btn btn-primary">Apply <span class="badge text-bg-danger"><%=job.openings%> Left</span></a>
+          <a href="#" class="btn btn-primary">Edit</a>
         </div>
       </div>
 <%})%>
-

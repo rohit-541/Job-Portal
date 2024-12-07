@@ -1,18 +1,18 @@
-<div class="dropdown me-5">
+<div class="dropdown me-5 m-3">
     <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
       Menu
     </button>
     <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Applications</a></li>
-      <li><a class="dropdown-item" href="/:id/jobs">Posted by You</a></li>
-      <li><a class="dropdown-item" href="/:id/addjob">Post New</a></li>
-      <li><a class="dropdown-item" href="/:id/jobs">See all jobs</a></li>
+      <li><a class="dropdown-item" href="/applications/<%=user.id%>">Applications</a></li>
+      <li><a class="dropdown-item" href="/jobs/<%=user.id%>">Posted by You</a></li>
+      <li><a class="dropdown-item" href="/addjob/<%=user.id%>">Post New</a></li>
+      <li><a class="dropdown-item" href="/gjobs/<%=user.id%>">See all jobs</a></li>
       <li><a class="dropdown-item" href="/logout">Logout</a></li>
     </ul>
   </div>
 </nav>
 
 
-<h1>Welcome </h1>
+<h1>Welcome <%=user.name%> </h1>
 
 

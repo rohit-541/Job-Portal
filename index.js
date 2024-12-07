@@ -40,6 +40,8 @@ app.get('/login',UController.loginPage);
 app.get('/register',UController.registerPage);
 app.get('/addJob',auth,UController.addJob);
 app.get('/logout',UController.logout);
+app.get('/jobs/:id',auth,UController.RecruterJobs);
+app.get('/gjobs/:id',auth,UController.allJobs);
 
 //Job Listing 
 app.post('/register',validateRequest,UController.registerUser);
