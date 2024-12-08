@@ -1,5 +1,6 @@
 <h2>All Jobs Posted by you</h2>
-<%jobs.forEach((job)=>{%>
+<div class="d-flex">
+  <%jobs.forEach((job)=>{%>
     <div class="card m-3" style="width: 18rem;">
         <div class="card-body">
           <h5 class="card-title"><%=job.designation%> at <%=job.company%> in <%=job.location%></h5>
@@ -14,7 +15,11 @@
           
           <h6>Apply by:<%=job.deadline%></h6>
           <h6>Salary:<%=job.salary%> </h6>
-          <a href="#" class="btn btn-primary">Edit</a>
+          <a href="/updateJob/<%=job.id%>" class="btn btn-primary">Edit</a>
+          <button onclick="deleteJob('<%=job.id%>','<%=user.id%>')" class="btn btn-primary">Remove</button>
         </div>
       </div>
 <%})%>
+
+</div>
+<script src="/js/job-add-js.js"></script>

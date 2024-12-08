@@ -65,3 +65,19 @@ sub_btn.addEventListener('click',()=>{
 
   skillCont.value = SkilsArray;
 })
+
+
+function deleteJob(id,userID){
+  console.log(id," ",userID);
+  const userAnswer = confirm('Are you sure to remove this Job?');
+  if(userAnswer){
+    const url = '/deleteJob/'+ id;
+    console.log(url);
+        fetch(url,{method:"POST"}).then((res)=>{
+      if(res.ok){
+        window.location.href=`/gjobs/`+ userID;
+      } 
+    })
+  }
+}
+

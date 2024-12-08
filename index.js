@@ -12,8 +12,12 @@ import validateRequest from './middleware/validation.middleware.js'
 import validateRequest2 from './middleware/validation.login.js'
 import {auth} from '../Job-Portal/middleware/auth.middleware.js'
 import { setLastVisit } from './middleware/setlastVisit.js'
+
+
 //create server
 const app = express();
+
+//Middlewares
 app.use(express.static('public'));
 app.use(session({
     secret:'secretKey',
@@ -23,28 +27,43 @@ app.use(session({
 }))
 app.use(cookieParser());
 app.use(setLastVisit);
-
+app.set('layout','layoutD','layoutU','layoutR');
 //set layout middleware
 app.use(ejsLayouts);
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 console.log();
+
 //set the view engine
 app.set('view engine','ejs');
 app.set('views',path.join(path.resolve(),'views'));
 
+//Make a userController
 const UController = new userControler();
-//Display Job listings
+
+
+//all get requests
+
+//No login required
 app.get('/',UController.Home);
 app.get('/login',UController.loginPage);
 app.get('/register',UController.registerPage);
+
+//After login
 app.get('/addJob/:id',auth,UController.addJob);
-app.get('/logout',UController.logout);
 app.get('/jobs/:id',auth,UController.RecruterJobs);
 app.get('/gjobs/:id',auth,UController.allJobs);
+app.get('/logout',UController.logout);
+app.get('/updateJob/:id',auth,UController.getupdateJob);
 
-//Job Listing 
+//All post requests(After Login)
 app.post('/register',validateRequest,UController.registerUser);
 app.post('/login',validateRequest2,UController.loginUser);
-app.post('/addJob',auth,UController.addNewJob);
+app.post('/addJob/:id',auth,UController.addNewJob);
+app.post('/updateJob/:id',auth,UController.updateJob);
+app.post('/deleteJob/:id',auth,UController.deleteJob);
+
+
+
+//Export app to server
 export {app}
