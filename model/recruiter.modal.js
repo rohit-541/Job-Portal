@@ -68,5 +68,3 @@ const newUSer = new recruterModal(123,'Rohit','r@gmail.com','ro','url');
 
 recruters.push(newUSer);
 
-const job1 = new jobModel("Tech","SDE","Delhi","Google","1200000","10/12/2024",['C++','Python','HTML'],5,'5/12/2024',['user1']);
-

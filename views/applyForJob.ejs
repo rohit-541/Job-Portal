@@ -1,0 +1,25 @@
+
+<div class="m-3">
+    <form action="/apply/<%=user.id%>" method="post" enctype="multipart/form-data">
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Name</span>
+            <input type="text" class="form-control" name="name" aria-label="Name" aria-describedby="basic-addon1">
+          </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Email</span>
+            <input type="email" class="form-control" name="email" aria-label="email" aria-describedby="basic-addon1">
+          </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Mobile No.</span>
+            <input type="number" class="form-control" name="contact" aria-label="contact" aria-describedby="basic-addon1">
+          </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Resume</span>
+            <input type="file" accept=".pdf" class="form-control" name="resume" aria-label="contact" aria-describedby="basic-addon1">
+          </div>
+          
+          <div class="col-auto">
+            <button type="submit" class="btn btn-primary mt-3">Apply</button>
+          </div>
+    </form>
+</div>

@@ -11,6 +11,10 @@ export default class userModal{
         this.notifications = [];
     }
 
+    static getByID(id){
+        return users.find(p=>p.id == id);
+    }
+
     //Returns all the users 
     static getAll(){
         return users;
@@ -58,3 +62,7 @@ export default class userModal{
 }
 
 var users = [];
+
+const newUSer = new userModal(123,'Riya','r@gmail.com','y','url');
+
+users.push(newUSer);

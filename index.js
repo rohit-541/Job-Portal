@@ -12,7 +12,7 @@ import validateRequest from './middleware/validation.middleware.js'
 import validateRequest2 from './middleware/validation.login.js'
 import {auth} from '../Job-Portal/middleware/auth.middleware.js'
 import { setLastVisit } from './middleware/setlastVisit.js'
-
+import {uploadFile} from '../Job-Portal/middleware/upload-file.js'
 
 //create server
 const app = express();
@@ -55,6 +55,8 @@ app.get('/jobs/:id',auth,UController.RecruterJobs);
 app.get('/gjobs/:id',auth,UController.allJobs);
 app.get('/logout',UController.logout);
 app.get('/updateJob/:id',auth,UController.getupdateJob);
+app.get('/allJobs/:id',auth,UController.userHome);
+app.get('/applyJob/:id',auth,UController.applyJob);
 
 //All post requests(After Login)
 app.post('/register',validateRequest,UController.registerUser);
@@ -62,7 +64,7 @@ app.post('/login',validateRequest2,UController.loginUser);
 app.post('/addJob/:id',auth,UController.addNewJob);
 app.post('/updateJob/:id',auth,UController.updateJob);
 app.post('/deleteJob/:id',auth,UController.deleteJob);
-
+app.post('/apply/:id',auth,uploadFile.single('resume'),UController.applyforJob);
 
 
 //Export app to server

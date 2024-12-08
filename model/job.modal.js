@@ -1,7 +1,7 @@
 export default class jobModel{
 
     //Create a new job
-    constructor(cat,des,loc,comp,sal,deadline,skils,opening,postedon,applicants,user){
+    constructor(cat,des,loc,comp,sal,deadline,skils,opening,postedon,user){
         this.id = generateID();
         this.categeory = cat;
         this.designation = des;
@@ -12,7 +12,7 @@ export default class jobModel{
         this.skills = skils;
         this.openings = opening;
         this.postedOn = postedon;
-        this.applicants = applicants;
+        this.applications = [];
         this.user = user;
     }   
 

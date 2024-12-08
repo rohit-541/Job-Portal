@@ -3,6 +3,7 @@ import userModal from '../model/applicant.modal.js'
 import jobModel from '../model/job.modal.js';
 import jobModal from '../model/job.modal.js'
 import recruterModal from '../model/recruiter.modal.js';
+import application from '../model/application.modal.js'
 
 //User Controller //Both Recruter and Applicant
 export class userControler{
@@ -62,12 +63,23 @@ export class userControler{
     }
 
     //render applications page
-    application(req,res,next){
+    applyJob(req,res,next){
         const id = req.params.id;
-        const user = recruterModal.getUserbyId(id);
+        const user = userModal.getByID(id);
 
         if(user){
-            const applicant = {name:user.name,resume:user.linkedIn,email:user.email,}
+            res.render('applyForJob',{login:true,msg:null,error:null,user:user});
+        }
+    }
+
+    userHome(req,res){
+        const jobs = jobModal.getAll();
+        const id = req.params.id;
+        const user = userModal.getByID(id);
+        if(user){
+            res.render('userhome',{login:true,msg:null,error:null,user:user,jobs:jobs,layout:'layoutU'});
+        }else{
+            res.redirect('/404');
         }
     }
 
@@ -109,7 +121,7 @@ export class userControler{
             
             if(user){
                 req.session.userEmail = email;
-                res.render('userHome',{login:true,user:user,msg:null,jobs:allJobs});
+                res.render('userHome',{login:true,user:user,msg:null,jobs:allJobs,layout:'layoutU'});
             }else{
                 res.render('login',{login:false,error:['Invalid Credentials'],msg:null,user:null});
             }
@@ -168,6 +180,14 @@ export class userControler{
         }
     }
 
+    applyforJob(req,res){
+        const id = req.params.id;
+        const {name,contact,email} = req.body;
+        const resumeUrl = 'public/uploads/'+req.file.filename;
+
+        const app = new application(name,email,contact,resumeUrl);
+        console.log(app);
+    }
 
 
     //Logout the user
