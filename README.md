@@ -11,15 +11,14 @@ Features
 8. Allow user to upload their resume using multer.
 9.Let user apply for job and application should be visible towards the recruter home.
 10.Accept the job application on recruter portal.
-
-   --To-do--  Deadline 10/12/2024
-   1.Send confirmation mail on registration.
-
-   
+11.Send confirmation mail on registration.
+      
 //Method to check
 1. clone on your server using git clone 'repo link'
 2. install all dependencies using npm i
 3. run server node server command
 4. type http://localhost:3000 on your browser
 5. Test the project and tell me issues and features to add inside portal
+6. Ensure you have nodemailer setup email to use emailing option
+7. if you do not wish to use nodemailer remove sendmail middleware from post request on route /register/
    
