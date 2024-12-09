@@ -1,4 +1,4 @@
-<h1><%=job.destignation%> at <%=job.company%> in <%=job.location%></h1>
+<h1><%=job.designation%> at <%=job.company%> in <%=job.location%></h1>
 
 
 <div class="d-flex">
@@ -8,11 +8,12 @@
             <h5 class="card-title"><%=app.userName%></h5>
             <p class="card-text"><%=app.userEmail%></p>
             <p class="card-text"><%=app.userContact%></p>
-      
+            <a href="/uploads/1733732846159-Question%20paper1.pdf" class="btn btn-primary">User Resume</a>
             <h6>Applied on:<%=app.AppliedOn%></h6>
             <% if(app.status == false){ %>
-              <a class="btn btn-danger">Accept</a>
-              <a class="btn btn-danger">Reject</a>
+              <form action="/accept/<%=app.id%>" method="post">
+                <button type="submit" class="btn btn-danger">Accept</button>
+              </form>
            <% }else{ %>
               <a class="btn btn-success">Accepted</a>
           <%} %>

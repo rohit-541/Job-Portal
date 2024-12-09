@@ -31,12 +31,10 @@ function addSkill(event) {
     event.preventDefault();
     const text = event.currentTarget.innerHTML;
     const index = SkilsArray.findIndex((p=>p==text));
-    console.log(text);
 
     if(index != -1){
       SkilsArray.splice(index,1);
     }
-    console.log(SkilsArray);
     event.currentTarget.remove();
 
   });
@@ -68,11 +66,9 @@ sub_btn.addEventListener('click',()=>{
 
 
 function deleteJob(id,userID){
-  console.log(id," ",userID);
   const userAnswer = confirm('Are you sure to remove this Job?');
   if(userAnswer){
     const url = '/deleteJob/'+ id;
-    console.log(url);
         fetch(url,{method:"POST"}).then((res)=>{
       if(res.ok){
         window.location.href=`/gjobs/`+ userID;

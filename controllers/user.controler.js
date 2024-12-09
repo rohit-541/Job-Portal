@@ -158,7 +158,6 @@ export class userControler{
     addNewJob(req,res,next){
         
         const id = req.params.id;
-        console.log(id);
         const user = recruterModal.getUserbyId(id);
 
         //Get current posted Date and skill array
@@ -168,13 +167,11 @@ export class userControler{
         //create a job
         const newJob = new jobModal(req.body.category,req.body.desg,req.body.location,req.body.company,req.body.salary,req.body.deadline,skillArray,req.body.opening,postedDate,[],user);
         
-        console.log(user);
         jobModal.addJobs(newJob);
         user.postedJob.push(newJob);
         user.notifications.push("Successfully added new Job");
         const jobs = user.postedJob;
         newJob.user = user;
-        console.log(newJob);
         return res.render('recruterJobs',{login:false,jobs:jobs,error:null,msg:null,user:user,layout:'layoutR'});
     }
 
@@ -192,7 +189,6 @@ export class userControler{
     //delete job
     deleteJob(req,res,next){
         const id = req.params.id;
-        console.log("Hello i am called on id:",id);
         const result = jobModal.removeJob(id);
         const jobs = jobModal.getAll();
         if(result){
@@ -202,11 +198,11 @@ export class userControler{
 
     applyforJob(req,res){
         const id = req.params.id.split('&');
-        console.log(typeof(id));
         const {name,contact,email} = req.body;
-        const resumeUrl = 'public/uploads/'+req.file.filename;
+        const resumeUrl = 'uploads/'+req.file.filename;
 
         const app = new application(name,email,contact,resumeUrl);
+        application.addApplication(app);
         const job  = jobModal.getByID(id[1]);
         const user = userModal.getByID(id[0]);
         job.JobApply(app);
@@ -217,6 +213,17 @@ export class userControler{
         res.render('applicationU',{error:null,msg:["Applied Successfully",],login:true,layout:'layoutU',user:user,application:user.application});
     }
 
+    accept(req,res){
+        const id = req.params.id;
+        const app = application.getbyID(id);
+
+        app.status = true;
+        const user = app.job.user;
+        const jobs = jobModal.getAll();
+
+        res.redirect(`/gjobs/${user.id}`)
+
+    }
 
 
     //Logout the user

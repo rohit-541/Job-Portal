@@ -32,7 +32,6 @@ app.set('layout','layoutD','layoutU','layoutR');
 app.use(ejsLayouts);
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
-console.log();
 
 //set the view engine
 app.set('view engine','ejs');
@@ -67,7 +66,7 @@ app.post('/addJob/:id',auth,UController.addNewJob);
 app.post('/updateJob/:id',auth,UController.updateJob);
 app.post('/deleteJob/:id',auth,UController.deleteJob);
 app.post('/apply/:id',auth,uploadFile.single('resume'),UController.applyforJob);
-
+app.post('/accept/:id',auth,UController.accept);
 
 //Export app to server
 export {app}

@@ -36,7 +36,6 @@ export default class jobModel{
     }
 
     static removeJob(id){
-        console.log(jobs);
         const jobIndex = jobs.findIndex(p=>p.id == id);
         if(jobIndex!= -1){
             const user = jobs[jobIndex].user;

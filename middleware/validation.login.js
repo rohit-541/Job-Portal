@@ -8,7 +8,6 @@ import {
     res,
     next
   ) => {
-    console.log(req.body);
     // 1. Setup rules for validation.
     const rules = [
         body('email').notEmpty().withMessage('Email is required'),
@@ -23,7 +22,6 @@ import {
   
     // 3. check if there are any errors after running the rules.
     var validationErrors = validationResult(req);
-    console.log(validationErrors);
     // 4. if errros, return the error message
     const error = validationErrors.array().map((err)=>err.msg); 
     if (!validationErrors.isEmpty()) {
