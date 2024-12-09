@@ -60,7 +60,7 @@ app.get('/applications/:id',auth,UController.getApplications);
 app.get('/applicationJ/:id',auth,UController.getApplicationJ);
 
 //All post requests(After Login)
-app.post('/register',validateRequest,sendmail,UController.registerUser);
+app.post('/register',validateRequest,UController.registerUser);
 app.post('/login',validateRequest2,UController.loginUser);
 app.post('/addJob/:id',auth,UController.addNewJob);
 app.post('/updateJob/:id',auth,UController.updateJob);
