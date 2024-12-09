@@ -9,6 +9,8 @@ export default class userModal{
         this.resume = resume;
         this.appliedJobs = [];
         this.notifications = [];
+        this.application = []
+        this.job=null;
     }
 
     static getByID(id){

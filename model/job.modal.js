@@ -49,10 +49,9 @@ export default class jobModel{
         }
     }
 
-    static JobApply(id,application){
-        const job = jobs.find(p=>p.id == id);
-        job.applicants.push(application);
-        job.openings-=1;
+    JobApply(application){
+        this.applications.push(application);
+        this.openings-=1;
     }
 
     static getByID(id){
@@ -60,7 +59,7 @@ export default class jobModel{
     }
 
     returnApplications(){
-        return this.applicants;
+        return this.applications;
     }
 }
 

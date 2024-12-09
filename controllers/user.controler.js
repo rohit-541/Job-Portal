@@ -13,6 +13,16 @@ export class userControler{
     Home(req,res,next){
         res.render('home.ejs',{login:false,error:null,msg:null,user:null,layout:'layoutD'});
     }   
+
+    getApplicationJ(req,res){
+        const id = req.params.id.split('&');
+
+        const job = jobModal.getByID(id[1]);
+        const user = userModal.getByID(id[0]);
+
+        res.render('applications',{login:true,msg:null,layout:'layoutR',job:job,application:job.applications,user:user});
+    }
+
     //render update job page
     getupdateJob(req,res,next){
         const id = req.params.id;
@@ -52,6 +62,12 @@ export class userControler{
         }
     }
 
+    getApplications(req,res){
+        const id = req.params.id;
+        const user = userModal.getByID(id);
+        res.render('applicationU',{login:true,msg:null,error:null,application:user.application,user:user,layout:'layoutU'});
+    }
+
     allJobs(req,res){
         const id = req.params.id;
         const user = recruterModal.getUserbyId(id);
@@ -64,11 +80,12 @@ export class userControler{
 
     //render applications page
     applyJob(req,res,next){
-        const id = req.params.id;
-        const user = userModal.getByID(id);
+        const id = req.params.id.split('&');
+        const user = userModal.getByID(id[0]);
+        const job = jobModal.getByID(id[1]);
 
         if(user){
-            res.render('applyForJob',{login:true,msg:null,error:null,user:user});
+            res.render('applyForJob',{login:true,msg:null,error:null,user:user,job:job,layout:'layoutU'});
         }
     }
 
@@ -141,7 +158,7 @@ export class userControler{
     addNewJob(req,res,next){
         
         const id = req.params.id;
-        
+        console.log(id);
         const user = recruterModal.getUserbyId(id);
 
         //Get current posted Date and skill array
@@ -151,10 +168,13 @@ export class userControler{
         //create a job
         const newJob = new jobModal(req.body.category,req.body.desg,req.body.location,req.body.company,req.body.salary,req.body.deadline,skillArray,req.body.opening,postedDate,[],user);
         
+        console.log(user);
         jobModal.addJobs(newJob);
         user.postedJob.push(newJob);
         user.notifications.push("Successfully added new Job");
         const jobs = user.postedJob;
+        newJob.user = user;
+        console.log(newJob);
         return res.render('recruterJobs',{login:false,jobs:jobs,error:null,msg:null,user:user,layout:'layoutR'});
     }
 
@@ -165,8 +185,8 @@ export class userControler{
         const {category,desg,location,company,salary,opening,deadline} = req.body;
         jobModal.updateJob(id,category,desg,location,company,salary,deadline,opening);
         const jobs = jobModal.getAll();
-    
-        res.render('userHome',{login:true,error:false,user:job.user,jobs:jobs,layout:'layoutR'});
+        const url = '/gjobs/'+job.user.id;
+        res.redirect(url);
     }
 
     //delete job
@@ -181,13 +201,22 @@ export class userControler{
     }
 
     applyforJob(req,res){
-        const id = req.params.id;
+        const id = req.params.id.split('&');
+        console.log(typeof(id));
         const {name,contact,email} = req.body;
         const resumeUrl = 'public/uploads/'+req.file.filename;
 
         const app = new application(name,email,contact,resumeUrl);
-        console.log(app);
+        const job  = jobModal.getByID(id[1]);
+        const user = userModal.getByID(id[0]);
+        job.JobApply(app);
+        user.appliedJobs.push(job);
+        user.application.push(app);
+        app.job = job;
+
+        res.render('applicationU',{error:null,msg:["Applied Successfully",],login:true,layout:'layoutU',user:user,application:user.application});
     }
+
 
 
     //Logout the user

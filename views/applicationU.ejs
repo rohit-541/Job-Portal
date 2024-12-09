@@ -1,0 +1,27 @@
+
+<div class="d-flex">
+    <%application.forEach((app)=>{%>
+        <div class="card m-3" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title"><%=app.job.designation%> at <%=app.job.company%> in <%=app.job.location%></h5>
+              <p class="card-text"><%=app.job.description%></p>
+        
+              <h6>Skills required</h6>
+              <ul class="list-group">
+    
+                <%if(app.job.skills != null){app.job.skills.forEach((skill)=>{%>
+                    <li class="list-group-item m-1"><%=skill%></li>
+                <%})}%>
+              </ul>
+              
+              <h6>Apply on:<%=app.AppliedOn%></h6>
+              <h6>Salary:<%=app.job.salary%> </h6>
+              <% if(app.status == false){ %>
+                <a class="btn btn-danger">Pending</a>
+             <% }else{ %>
+                <a class="btn btn-success">Accepted</a>
+            <% } %>
+            </div>
+          </div> 
+    <%})%>
+</div>

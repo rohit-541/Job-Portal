@@ -5,6 +5,7 @@ export default class application{
         this.userContact = userContact;
         this.userResume = userResume;
         this.userEmail = userEmail;
+        this.status = false;
         this.AppliedOn = new Date().toLocaleDateString();
     }
 }

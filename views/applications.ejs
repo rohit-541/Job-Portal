@@ -1,13 +1,22 @@
 <h1><%=job.destignation%> at <%=job.company%> in <%=job.location%></h1>
 
-<% applications.forEach((user)=>{
-    <div class="card m-3" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title"><%=user.name%></h5>
-          <p class="card-text"><%=user.email%></p>
-          <p class="card-text"><%=user.contact%></p>
-          <a href="#" class="btn btn-primary">Accept</a>
-          <a href="<%=user.resume%>" class="btn btn-primary">Resume</a>
-        </div>
-      </div>
-<%})%>
+
+<div class="d-flex">
+  <%application.forEach((app)=>{%>
+      <div class="card m-3" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title"><%=app.userName%></h5>
+            <p class="card-text"><%=app.userEmail%></p>
+            <p class="card-text"><%=app.userContact%></p>
+      
+            <h6>Applied on:<%=app.AppliedOn%></h6>
+            <% if(app.status == false){ %>
+              <a class="btn btn-danger">Accept</a>
+              <a class="btn btn-danger">Reject</a>
+           <% }else{ %>
+              <a class="btn btn-success">Accepted</a>
+          <%} %>
+          </div>
+        </div> 
+  <%})%>
+</div>

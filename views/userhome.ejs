@@ -28,7 +28,7 @@
           <h6>Apply by:<%=job.deadline%></h6>
           <h6>Salary:<%=job.salary%> </h6>
           <% if(user.postedJob == null){%>
-            <a href="/applyJob/<%=user.id%>" class="btn btn-primary">Apply <span class="badge text-bg-danger"><%=job.openings%> Left</span></a>
+            <a href="/applyJob/<%=user.id%>&<%=job.id%>" class="btn btn-primary">Apply <span class="badge text-bg-danger"><%=job.openings%> Left</span></a>
          <%}%>
         </div>
       </div>

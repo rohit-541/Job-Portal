@@ -1,6 +1,6 @@
 
 <div class="m-3">
-    <form action="/apply/<%=user.id%>" method="post" enctype="multipart/form-data">
+    <form action="/apply/<%=user.id%>&<%=job.id%>" method="post" enctype="multipart/form-data">
         <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">Name</span>
             <input type="text" class="form-control" name="name" aria-label="Name" aria-describedby="basic-addon1">

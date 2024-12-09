@@ -16,6 +16,7 @@
           <h6>Apply by:<%=job.deadline%></h6>
           <h6>Salary:<%=job.salary%> </h6>
           <a href="/updateJob/<%=job.id%>" class="btn btn-primary">Edit</a>
+          <a href="/applicationJ/<%=user.id%>&<%=job.id%>" class="btn btn-primary m-3">Applications</a>
           <button onclick="deleteJob('<%=job.id%>','<%=user.id%>')" class="btn btn-primary">Remove</button>
         </div>
       </div>

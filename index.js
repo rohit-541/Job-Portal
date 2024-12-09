@@ -57,6 +57,8 @@ app.get('/logout',UController.logout);
 app.get('/updateJob/:id',auth,UController.getupdateJob);
 app.get('/allJobs/:id',auth,UController.userHome);
 app.get('/applyJob/:id',auth,UController.applyJob);
+app.get('/applications/:id',auth,UController.getApplications);
+app.get('/applicationJ/:id',auth,UController.getApplicationJ);
 
 //All post requests(After Login)
 app.post('/register',validateRequest,UController.registerUser);
